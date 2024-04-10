@@ -32,12 +32,31 @@ def linear_search(sequence, number):
     return dict
 
 
+def pattern_search(sequence, pattern):
+    positions = set()
+    len_pattern = len(pattern)
+    len_sequence = len(sequence)
+    i = 0
+
+    for i in range(len_sequence - len_pattern + 1):
+        if sequence[i:i + len_pattern] == pattern:
+            positions.add(i)
+
+    return positions
+
+
+
 def main():
     unordered_numbers = read_data("sequential.json", "unordered_numbers")
     test_number = 7
     test_sequence = [1, 4, 7]
+    search_pattern = "ATA"
     find_number = linear_search(test_sequence, test_number)
-
+    with open("sequential.json", mode="r") as file:
+        data = json.load(file)
+        dna_sequence = data["dna_sequence"]
+    result_positions = pattern_search(dna_sequence, search_pattern)
+    print(result_positions)
 
 if __name__ == '__main__':
     main()
