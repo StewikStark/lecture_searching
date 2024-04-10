@@ -28,12 +28,15 @@ def linear_search(sequence, number):
         if sequence[pos] == number:
             dict["positions"].append(pos)
             dict["count"] = dict["count"] + 1
+
     return dict
 
 
 def main():
     unordered_numbers = read_data("sequential.json", "unordered_numbers")
-    linear_search(sequence, number)
+    test_number = 7
+    test_sequence = [1, 4, 7]
+    find_number = linear_search(test_sequence, test_number)
 
 
 if __name__ == '__main__':
